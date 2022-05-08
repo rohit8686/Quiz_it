@@ -1,0 +1,13 @@
+@import "https://spiralui.netlify.app/index.css";
+
+:root {
+  --html-color: #f97316;
+  --css-color: #2563eb;
+  --js-color: #fcd34d;
+  --react-color: #38bdf8;
+}
+
+.nav {
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.3);
+}
+
