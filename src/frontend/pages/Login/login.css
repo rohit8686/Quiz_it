@@ -1,0 +1,38 @@
+.input,
+.full-width {
+    width: 100%;
+}
+
+.text-info {
+    color: var(--info-color);
+}
+
+.p-2 {
+    padding: 2rem;
+}
+
+.small-gap {
+    gap: 4px;
+}
+
+.outline-btn {
+    background-color: none;
+    border: 2px solid var(--info-color);
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.outline-btn:hover {
+    background-color: var(--info-color);
+    color: var(--white-color);
+}
+
+@media screen and (max-width: 500px) {
+    .input::placeholder {
+        font-size: 1rem;
+    }
+
+    .icon.chevron-right {
+        font-size: 2rem;
+    }
+}

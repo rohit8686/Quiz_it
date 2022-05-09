@@ -32,11 +32,14 @@
             var(--white-color));
 }
 
-.card {
+.quiz-category {
+    position: relative;
+    margin: 2rem auto;
+    box-shadow: 4px 4px 30px 6px rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
 }
 
-.card-width {
+.quiz-category-width {
     width: 250px;
     height: 150px;
 }
