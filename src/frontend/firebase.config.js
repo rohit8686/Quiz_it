@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCKep-FAdWjkTDFiJh57dKE-D3giKGzJTA",
-  authDomain: "quizit-6662c.firebaseapp.com",
-  projectId: "quizit-6662c",
-  storageBucket: "quizit-6662c.appspot.com",
-  messagingSenderId: "653278080445",
-  appId: "1:653278080445:web:d085a324d705b8042936d4",
-  measurementId: "G-V96MN4J0BZ",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
