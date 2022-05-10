@@ -1,0 +1,50 @@
+.main-text {
+    font-size: 2rem;
+}
+
+.category {
+    width: 90%;
+    height: 60vh;
+    margin: 0 auto;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+.html {
+    background-image: linear-gradient(0deg,
+            var(--html-color),
+            var(--white-color));
+}
+
+.css {
+    background-image: linear-gradient(0deg, var(--css-color), var(--white-color));
+}
+
+.js {
+    background-image: linear-gradient(0deg, var(--js-color), var(--white-color));
+}
+
+.react {
+    background-image: linear-gradient(0deg,
+            var(--react-color),
+            var(--white-color));
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+.card-width {
+    width: 250px;
+    height: 150px;
+}
+
+.badge-img {
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+    width: 70px;
+    height: 70px;
+}
