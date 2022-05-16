@@ -6,6 +6,7 @@ import { Quiz } from "../pages/Quiz/Quiz";
 import { Results } from "../pages/Results/Results";
 import { Rules } from "../pages/Rules/Rules";
 import { Signup } from "../pages/Signup/Signup";
+import { UserProfile } from "../pages/UserProfile/UserProfile";
 import { PrivateRoute } from "./PrivateRoute";
 
 export const Routing = () => {
@@ -20,6 +21,7 @@ export const Routing = () => {
         <Route path="/quiz/:quizName" element={<Quiz />} />
         <Route path="/quiz/rules/:quizName" element={<Rules />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Route>
     </Routes>
   );
