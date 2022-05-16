@@ -5,6 +5,9 @@
   --css-color: #2563eb;
   --js-color: #fcd34d;
   --react-color: #38bdf8;
+  --option-bg : #e2e8f0;
+  --option-select : #155e75;
+  --option-hover : #cbd5e1;
 }
 
 .nav {

@@ -12,21 +12,21 @@
     gap: 2rem;
 }
 
-.html {
+.HTML {
     background-image: linear-gradient(0deg,
             var(--html-color),
             var(--white-color));
 }
 
-.css {
+.CSS {
     background-image: linear-gradient(0deg, var(--css-color), var(--white-color));
 }
 
-.js {
+.JS {
     background-image: linear-gradient(0deg, var(--js-color), var(--white-color));
 }
 
-.react {
+.React {
     background-image: linear-gradient(0deg,
             var(--react-color),
             var(--white-color));

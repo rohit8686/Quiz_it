@@ -1,0 +1,48 @@
+.option {
+    background-color: var(--option-bg);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.option:hover {
+    background-color: var(--option-hover);
+}
+
+.submit-btn {
+    display: block;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+.bg {
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.5rem;
+}
+
+.input-radio{
+    display: none;
+}
+
+.input-radio:checked ~ .label{
+    background-color: var(--option-select);
+    color:var(--white-color);
+}
+.label{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.next-question{
+    cursor: pointer;
+}
+
+.pb-1 {
+    padding-bottom: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
