@@ -46,6 +46,8 @@ function AuthProvider({ children }) {
         return { ...initialState };
       case "ERROR":
         return { ...authState, errorMsg: action.payload };
+      case "CLEAR_ERROR":
+        return { ...authState, errorMsg: "" };
       case "TEST_CREDENTIALS":
         return {
           ...authState,
@@ -77,7 +79,6 @@ function AuthProvider({ children }) {
   function signout() {
     return signOut(auth);
   }
-
   const value = {
     currentUser,
     signup,

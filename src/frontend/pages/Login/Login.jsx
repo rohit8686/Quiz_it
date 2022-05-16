@@ -1,5 +1,5 @@
 import "./login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { toastContainer } from "../../Components/Toast/Toast";
 
@@ -10,6 +10,7 @@ export function Login() {
     authDispatch,
   } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="flex">
@@ -20,15 +21,22 @@ export function Login() {
             e.preventDefault();
             try {
               await signin(email, password);
-              navigate("/", { replace: true });
+              authDispatch({ type: "RESET_FORM" });
+              navigate(location.state?.from?.pathname || "/", {
+                replace: true,
+              });
               toastContainer("Login successfull", "success");
             } catch (error) {
               if (error.code === "auth/wrong-password") {
                 authDispatch({ type: "ERROR", payload: "Incorrect password" });
+                setTimeout(() => authDispatch({ type: "CLEAR_ERROR" }), 4000);
+                authDispatch({ type: "RESET_FORM" });
               } else if (error.code === "auth/user-not-found") {
                 authDispatch({ type: "ERROR", payload: "Incorrect email" });
+                setTimeout(() => authDispatch({ type: "CLEAR_ERROR" }), 4000);
+                authDispatch({ type: "RESET_FORM" });
               }
-              console.log(error);
+              console.error(error);
             }
           }}
         >

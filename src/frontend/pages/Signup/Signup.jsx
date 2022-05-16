@@ -28,8 +28,10 @@ export function Signup() {
                   type: "ERROR",
                   payload: "Email already exists",
                 });
+                setTimeout(() => authDispatch({ type: "CLEAR_ERROR" }), 4000);
+                authDispatch({ type: "RESET_FORM" });
               }
-              console.log(error);
+              console.error(error);
             }
           }}
         >

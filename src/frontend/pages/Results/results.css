@@ -1,0 +1,8 @@
+.correct-option{
+    background-color: var(--success-color);
+    color:var(--white-color);
+}
+.wrong-option{
+    background-color: var(--danger-color);
+    color: var(--white-color);
+}

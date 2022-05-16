@@ -1,0 +1,22 @@
+.rules-card {
+    width: 60%;
+    border-radius: 1rem;
+    padding: 2rem 3rem;
+    margin-top: 1rem;
+}
+
+.rule {
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+}
+
+.btn-size {
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .rules-card {
+        width: 90%;
+    }
+}
