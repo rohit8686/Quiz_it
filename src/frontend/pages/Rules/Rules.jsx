@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "./rules.css";
 
 export const Rules = () => {
@@ -33,6 +34,7 @@ export const Rules = () => {
           </Link>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
