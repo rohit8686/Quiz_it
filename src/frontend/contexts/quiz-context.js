@@ -13,10 +13,12 @@ const QuizProvider = ({ children }) => {
       if (questions.exists()) {
         quizDispatch({ type: "QUIZ_DATA", payload: questions.data() });
       }
+      quizDispatch({ type: "LOADING", payload: false });
     })();
   }, []);
 
   const initialState = {
+    isLoading: true,
     quizData: {},
     quizCategory: "",
     selectedOption: "",
@@ -27,6 +29,8 @@ const QuizProvider = ({ children }) => {
   };
   const quizReducerFunction = (quizState, action) => {
     switch (action.type) {
+      case "LOADING":
+        return { ...quizState, isLoading: action.payload };
       case "QUIZ_DATA":
         return { ...quizState, quizData: action.payload };
       case "QUIZ_CATEGORY":
