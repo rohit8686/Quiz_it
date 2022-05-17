@@ -5,12 +5,53 @@
   --css-color: #2563eb;
   --js-color: #fcd34d;
   --react-color: #38bdf8;
-  --option-bg : #e2e8f0;
-  --option-select : #155e75;
-  --option-hover : #cbd5e1;
+}
+
+.light{
+  --option-bg: #e2e8f0;
+  --option-select: #3b82f6;
+  --option-hover: #cbd5e1;
+  --box-shadow: 4px 4px 20px 5px rgb(0, 0, 0, 0.3);
+  --box-hover-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.3);
+  --bg-color: var(--white-color);
+  --color: var(--black-color);
+}
+
+.dark{
+  --option-bg: #52525b;
+  --option-select: #3b82f6;
+  --option-hover: #71717a;
+  --box-shadow : 0 0 4px 4px rgba(255, 255, 255, 0.3);
+  --box-hover-shadow: 0 0 4px 5px rgba(255, 255, 255, 0.3);
+  --bg-color:var(--black-color);
+  --color: var(--white-color);
+}
+
+.card,
+.container {
+  box-shadow: var(--box-shadow);
+}
+
+.card:hover,
+.container:hover {
+  box-shadow: var(--box-hover-shadow);
+}
+
+.app{
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--color);
 }
 
 .nav {
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--box-shadow);
+}
+
+abbr{
+  text-decoration: none;
+}
+
+.theme{
+  cursor: pointer;
 }
 

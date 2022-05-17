@@ -167,9 +167,7 @@ export const Quiz = () => {
             </div>
           </div>
         </div>
-        <a href="/Pages/Results/results.html" className="link">
-          <button className="btn btn-error submit-btn mb-1">Submit Quiz</button>
-        </a>
+        <button className="btn btn-error submit-btn">Submit Quiz</button>
       </form>
     </div>
   );
