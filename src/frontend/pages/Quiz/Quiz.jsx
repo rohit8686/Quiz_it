@@ -8,7 +8,7 @@ export const Quiz = () => {
   const navigate = useNavigate();
   const { quizName } = useParams();
   const {
-    quizState: { quizData, selectedOption, score, questionNumber, questions },
+    quizState: { quizData, selectedOption, questionNumber, questions },
     quizDispatch,
   } = useQuiz();
 
