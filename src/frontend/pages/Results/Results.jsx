@@ -69,7 +69,7 @@ export const Results = () => {
             index
           ) => {
             return (
-              <div className="container pt-1" key={_id}>
+              <div className="container pt-1 mb-0" key={_id}>
                 <div className="flex space-between">
                   <h3>
                     Question {_id}/{questions.length}
