@@ -6,3 +6,6 @@
     background-color: var(--danger-color);
     color: var(--white-color);
 }
+.mb-0{
+    margin-bottom: 0;
+}
