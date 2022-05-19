@@ -1,5 +1,6 @@
 import { doc, setDoc } from "firebase/firestore";
 import React, { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { useAuth } from "../../contexts/auth-context";
 import { useQuiz } from "../../contexts/quiz-context";
 import { db } from "../../firebase.config";
@@ -34,10 +35,12 @@ export const Results = () => {
   }, [questions, quizDispatch, selectedOptions]);
 
   useEffect(() => {
-    setDoc(doc(db, userId, quizCategory), {
-      selectedOptions,
-      score,
-    });
+    if (quizCategory) {
+      setDoc(doc(db, userId, quizCategory), {
+        selectedOptions,
+        score,
+      });
+    }
   }, [score, userId, quizCategory, selectedOptions]);
 
   const optionHandler = (index, answer, option) => {
@@ -146,6 +149,7 @@ export const Results = () => {
           }
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
