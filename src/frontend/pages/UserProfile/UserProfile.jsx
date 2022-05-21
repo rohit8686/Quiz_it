@@ -6,10 +6,8 @@ import { useAuth } from "../../contexts/auth-context";
 export const UserProfile = () => {
   const { signout } = useAuth();
   const navigate = useNavigate();
-  const {
-    currentUser: { email, metadata },
-  } = useAuth();
-  const lastLogin = metadata.lastSignInTime;
+  const { currentUser } = useAuth();
+  const lastLogin = currentUser?.metadata.lastSignInTime;
 
   return (
     <div className="card card-width p-1">
@@ -17,7 +15,7 @@ export const UserProfile = () => {
       <hr className="hr" />
       <h3>
         <strong>Email : </strong>
-        {email}
+        {currentUser?.email}
       </h3>
       <p className="pt-1">Last login : {lastLogin}</p>
       <div className="pt-1">
