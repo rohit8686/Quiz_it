@@ -1,0 +1,27 @@
+.leaderboard-table{
+    border-collapse: collapse;
+    width: 50%;
+    margin: 1rem auto;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+}
+.thead{
+    padding: 1rem;
+    font-size: 1.4rem;
+    background-color: var(--info-color);
+    color:var(--white-color);
+}
+.th{
+    font-size: 1rem;
+}
+.tr{
+    border-bottom: 2px solid var(--option-hover);
+}
+
+@media screen and (max-width:500px) {
+    .leaderboard-table {
+        width: 80%;
+    }
+}

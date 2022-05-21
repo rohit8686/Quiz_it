@@ -1,5 +1,6 @@
 import { doc, setDoc } from "firebase/firestore";
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "../../contexts/auth-context";
 import { useQuiz } from "../../contexts/quiz-context";
@@ -36,10 +37,16 @@ export const Results = () => {
 
   useEffect(() => {
     if (quizCategory) {
-      setDoc(doc(db, userId, quizCategory), {
-        selectedOptions,
-        score,
-      });
+      setDoc(
+        doc(db, "users", userId),
+        {
+          [quizCategory]: {
+            selectedOptions,
+            score,
+          },
+        },
+        { merge: true }
+      );
     }
   }, [score, userId, quizCategory, selectedOptions]);
 
@@ -64,7 +71,12 @@ export const Results = () => {
 
   return (
     <div>
-      <h2 className="text-center pt-1">Your score is {score}</h2>
+      <div className="flex space-around pt-1">
+        <h2 className="text-center">Your score is {score}</h2>
+        <Link className="link" to="/leaderboard">
+          <button className="btn btn-error">Leaderboard</button>
+        </Link>
+      </div>
       <div>
         {questions.map(
           (
