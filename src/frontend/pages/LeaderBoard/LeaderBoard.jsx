@@ -13,9 +13,6 @@ export const LeaderBoard = () => {
     (a, b) => b.data[quizCategory]?.score - a.data[quizCategory]?.score
   );
 
-  console.log("leaderboard");
-  console.log(leaderBoardData);
-
   useEffect(() => {
     (async () => {
       const docRef = await getDocs(collection(db, "users"));
