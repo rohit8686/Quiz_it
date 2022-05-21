@@ -11,6 +11,7 @@
 * Rules
 * Quit Quiz
 * Results
+* Leaderboard
 * User Profile
 * Not Found (404 error) page
 * Protected pages
@@ -27,7 +28,7 @@
 * [Quiz](https://quizit.vercel.app/quiz/React)
 * [Results](https://quizit.vercel.app/results)
 * [Profile](https://quizit.vercel.app/profile)
-
+* [Leaderboard](https://quizit.vercel.app/leaderboard)
 
 ## Tech Stack : 
 
