@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "../pages/Home/Home";
+import { LeaderBoard } from "../pages/LeaderBoard/LeaderBoard";
 import { Login } from "../pages/Login/Login";
 import { Quiz } from "../pages/Quiz/Quiz";
 import { Results } from "../pages/Results/Results";
@@ -22,6 +23,7 @@ export const Routing = () => {
         <Route path="/quiz/rules/:quizName" element={<Rules />} />
         <Route path="/results" element={<Results />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/leaderboard" element={<LeaderBoard />} />
       </Route>
     </Routes>
   );
