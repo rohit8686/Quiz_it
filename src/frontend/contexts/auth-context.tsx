@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
   useReducer,
+  ReactNode,
 } from "react";
 import { auth } from "../firebase.config";
 import {
@@ -11,30 +12,56 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  User,
+  UserCredential,
 } from "firebase/auth";
 
-const AuthContext = createContext({
-  currentUser: null,
-  signup: () => Promise,
-  signin: () => Promise,
-  signout: () => Promise,
-});
+type Auth = {
+  email: string;
+  password: string;
+  errorMsg: string;
+};
 
+type Action =
+  | { type: "EMAIL"; payload: string }
+  | { type: "PASSWORD"; payload: string }
+  | { type: "RESET_FORM" }
+  | { type: "CLEAR_AUTH_DATA" }
+  | { type: "ERROR"; payload: string }
+  | { type: "CLEAR_ERROR" }
+  | { type: "TEST_CREDENTIALS" };
+
+type AuthContextType = {
+  currentUser: User | null;
+  signup: (email: string, password: string) => Promise<UserCredential>;
+  signin: (email: string, password: string) => Promise<UserCredential>;
+  signout: () => void;
+  authState: typeof initialState;
+  authDispatch: (action: Action) => void;
+};
+
+const initialState: Auth = {
+  email: "",
+  password: "",
+  errorMsg: "",
+};
+
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 const useAuth = () => useContext(AuthContext);
 
-function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
-  const initialState = {
-    email: "",
-    password: "",
-    errorMsg: "",
-  };
+type Props = {
+  children: ReactNode;
+};
+
+const AuthProvider = ({ children }: Props) => {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
   const [authState, authDispatch] = useReducer(
     authReducerFunction,
     initialState
   );
 
-  function authReducerFunction(authState, action) {
+  function authReducerFunction(authState: Auth, action: Action) {
     switch (action.type) {
       case "EMAIL":
         return { ...authState, email: action.payload };
@@ -66,30 +93,35 @@ function AuthProvider({ children }) {
     });
     return () => {
       unsubscribe();
-      localStorage.clear("user");
+      localStorage.clear();
     };
   }, []);
 
-  function signup(email, password) {
+  function signup(email: string, password: string) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
-  function signin(email, password) {
+  function signin(email: string, password: string) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   function signout() {
     return signOut(auth);
   }
-  const value = {
-    currentUser,
-    signup,
-    signin,
-    signout,
-    authState,
-    authDispatch,
-  };
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
+  return (
+    <AuthContext.Provider
+      value={{
+        currentUser,
+        signup,
+        signin,
+        signout,
+        authState,
+        authDispatch,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 export { useAuth, AuthProvider };

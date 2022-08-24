@@ -1,5 +1,5 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { collection, DocumentData, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { useQuiz } from "../../contexts/quiz-context";
 import { db } from "../../firebase.config";
 import "./leaderboard.css";
@@ -8,7 +8,8 @@ export const LeaderBoard = () => {
   const {
     quizState: { quizCategory },
   } = useQuiz();
-  const [usersQuizData, setUsersQuizData] = useState([]);
+
+  const [usersQuizData, setUsersQuizData] = useState<DocumentData[]>([]);
   let leaderBoardData = [...usersQuizData].sort(
     (a, b) => b.data[quizCategory]?.score - a.data[quizCategory]?.score
   );

@@ -1,5 +1,5 @@
 import { doc, setDoc } from "firebase/firestore";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "../../contexts/auth-context";
@@ -38,7 +38,7 @@ export const Results = () => {
   useEffect(() => {
     if (quizCategory) {
       setDoc(
-        doc(db, "users", userId),
+        doc(db, "users", userId || ""),
         {
           [quizCategory]: {
             selectedOptions,
@@ -50,7 +50,7 @@ export const Results = () => {
     }
   }, [score, userId, quizCategory, selectedOptions]);
 
-  const optionHandler = (index, answer, option) => {
+  const optionHandler = (index: number, answer: string, option: string) => {
     if (selectedOptions[index]) {
       if (
         selectedOptions[index] === option &&

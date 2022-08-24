@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useQuiz } from "../../contexts/quiz-context";
 import Loader from "react-js-loader";

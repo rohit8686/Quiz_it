@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuiz } from "../../contexts/quiz-context";
 import "./quiz.css";
@@ -21,7 +21,7 @@ export const Quiz = () => {
         quizDispatch({ type: "QUESTIONS", payload: quizData[category] });
       }
     }
-    quizDispatch({ type: "QUIZ_CATEGORY", payload: quizName });
+    quizDispatch({ type: "QUIZ_CATEGORY", payload: quizName || "" });
   }, [quizName, quizDispatch, quizData]);
 
   useEffect(() => {

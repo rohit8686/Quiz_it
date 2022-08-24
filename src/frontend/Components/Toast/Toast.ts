@@ -1,7 +1,7 @@
-import { toast } from "react-toastify";
+import { toast, TypeOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const toastContainer = (msg, type) => {
+export const toastContainer = (msg:string, type:TypeOptions) => {
   toast(msg, {
     position: "bottom-left",
     autoClose: 3000,

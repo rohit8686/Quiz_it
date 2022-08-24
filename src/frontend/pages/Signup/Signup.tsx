@@ -64,7 +64,7 @@ export function Signup() {
               id="password"
               placeholder="Enter password"
               className="input"
-              minLength="6"
+              minLength={6}
               value={password}
               required
               onChange={(e) => {
