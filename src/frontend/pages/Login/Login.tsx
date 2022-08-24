@@ -10,7 +10,7 @@ export function Login() {
     authDispatch,
   } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
+  const location: any = useLocation();
 
   return (
     <div className="flex">
