@@ -15,23 +15,25 @@ import {
   User,
   UserCredential,
 } from "firebase/auth";
+import { authReducerFunction } from "./reducerFn/authReducerFn";
 
-type Auth = {
+export type Auth = {
   email: string;
   password: string;
   errorMsg: string;
 };
 
-type Action =
+export type Action =
   | { type: "EMAIL"; payload: string }
   | { type: "PASSWORD"; payload: string }
   | { type: "RESET_FORM" }
-  | { type: "CLEAR_AUTH_DATA" }
+  // | { type: "CLEAR_AUTH_DATA" }
   | { type: "ERROR"; payload: string }
   | { type: "CLEAR_ERROR" }
-  | { type: "TEST_CREDENTIALS" };
+  | { type: "TEST_CREDENTIALS" }
+  | { type: "DEFAULT" };
 
-type AuthContextType = {
+export type AuthContextType = {
   currentUser: User | null;
   signup: (email: string, password: string) => Promise<UserCredential>;
   signin: (email: string, password: string) => Promise<UserCredential>;
@@ -40,7 +42,7 @@ type AuthContextType = {
   authDispatch: (action: Action) => void;
 };
 
-const initialState: Auth = {
+export const initialState = {
   email: "",
   password: "",
   errorMsg: "",
@@ -53,6 +55,18 @@ type Props = {
   children: ReactNode;
 };
 
+export function signup(email: string, password: string) {
+  return createUserWithEmailAndPassword(auth, email, password);
+}
+
+export function signin(email: string, password: string) {
+  return signInWithEmailAndPassword(auth, email, password);
+}
+
+export function signout() {
+  return signOut(auth);
+}
+
 const AuthProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
@@ -60,31 +74,6 @@ const AuthProvider = ({ children }: Props) => {
     authReducerFunction,
     initialState
   );
-
-  function authReducerFunction(authState: Auth, action: Action) {
-    switch (action.type) {
-      case "EMAIL":
-        return { ...authState, email: action.payload };
-      case "PASSWORD":
-        return { ...authState, password: action.payload };
-      case "RESET_FORM":
-        return { ...authState, email: "", password: "" };
-      case "CLEAR_AUTH_DATA":
-        return { ...initialState };
-      case "ERROR":
-        return { ...authState, errorMsg: action.payload };
-      case "CLEAR_ERROR":
-        return { ...authState, errorMsg: "" };
-      case "TEST_CREDENTIALS":
-        return {
-          ...authState,
-          email: "rohit@gmail.com",
-          password: "rohitrohit",
-        };
-      default:
-        return { ...authState };
-    }
-  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -97,17 +86,6 @@ const AuthProvider = ({ children }: Props) => {
     };
   }, []);
 
-  function signup(email: string, password: string) {
-    return createUserWithEmailAndPassword(auth, email, password);
-  }
-
-  function signin(email: string, password: string) {
-    return signInWithEmailAndPassword(auth, email, password);
-  }
-
-  function signout() {
-    return signOut(auth);
-  }
   return (
     <AuthContext.Provider
       value={{

@@ -27,6 +27,7 @@ export const Navbar = () => {
         {theme === "light" ? (
           <span
             className="material-icons-outlined"
+            data-testid="dark"
             onClick={() => setTheme("dark")}
           >
             <abbr title="dark mode" className="theme">
@@ -36,6 +37,7 @@ export const Navbar = () => {
         ) : (
           <span
             className="material-icons-outlined"
+            data-testid="light"
             onClick={() => setTheme("light")}
           >
             <abbr title="light mode" className="theme">

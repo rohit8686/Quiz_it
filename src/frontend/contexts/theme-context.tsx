@@ -11,21 +11,23 @@ type ThemeContextType = {
   setTheme: (arg: string) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType);
+export const ThemeContext = createContext<ThemeContextType>(
+  {} as ThemeContextType
+);
 const useTheme = () => useContext(ThemeContext);
 
 type Props = {
   children: ReactNode;
 };
 
-const ThemeProvider = ({ children }: Props) => {
-  const getThemeFromLocalStorage = (): string => {
-    if (localStorage.getItem("theme") !== null) {
-      return JSON.parse(localStorage.getItem("theme") || "");
-    }
-    return "light";
-  };
+export const getThemeFromLocalStorage = (): string => {
+  if (localStorage.getItem("theme") !== null) {
+    return JSON.parse(localStorage.getItem("theme") || "");
+  }
+  return "light";
+};
 
+const ThemeProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState(getThemeFromLocalStorage());
 
   useEffect(() => {
